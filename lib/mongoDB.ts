@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-let isConnected: boolean = false;
+ let isConnected: boolean = false;
 
-export const connectToDB = async (): Promise<void> => {
+const connectToDB = async () => {
   mongoose.set("strictQuery", true)
 
   if (isConnected) {
@@ -15,9 +15,10 @@ export const connectToDB = async (): Promise<void> => {
       dbName: "Borcelle_Store"
     })
 
-    isConnected = true;
+    // isConnected = true;
     console.log("MongoDB is connected");
   } catch (err) {
     console.log(err)
   }
 }
+export default connectToDB;

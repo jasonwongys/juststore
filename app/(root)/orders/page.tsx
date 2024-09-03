@@ -7,7 +7,9 @@ const Orders = async () => {
   const { userId } = auth();
   const orders = await getOrders(userId as string);
 
-  console.log(orders[0].products);
+  // const orders = await getOrders();
+
+  console.log("ORDERS ", orders);
 
   return (
     <div className="px-10 py-5 max-sm:px-3">

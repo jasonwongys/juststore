@@ -27,15 +27,18 @@ const Cart = () => {
   const handleCheckout = async () => {
     try {
       if (!user) {
-        router.push("sign-in");
+        router.push("sign-in"); // IF user is not signed in, route to sign in 
+        console.log(user)
       } else {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+          
           method: "POST",
           body: JSON.stringify({ cartItems: cart.cartItems, customer }),
         });
         const data = await res.json();
-        window.location.href = data.url;
-        console.log(data);
+        
+        window.location.href = data.url; //if successful, will go to success url
+        console.log("HANDLE CHECKOUT DATA: " ,data);
       }
     } catch (err) {
       console.log("[checkout_POST]", err);
@@ -43,10 +46,11 @@ const Cart = () => {
   };
 
   return (
-    <div className="flex gap-20 py-16 px-10 max-lg:flex-col max-sm:px-3">
+    <div className="flex gap-20 py-16 px-10 max-lg:flex-col max-sm:px-3 h-full w-full">
       <div className="w-2/3 max-lg:w-full">
         <p className="text-heading3-bold">Shopping Cart</p>
         <hr className="my-6" />
+        
 
         {cart.cartItems.length === 0 ? (
           <p className="text-body-bold">No item in cart</p>
@@ -56,6 +60,7 @@ const Cart = () => {
               <div className="w-full flex max-sm:flex-col max-sm:gap-3 hover:bg-grey-1 px-4 py-3 items-center max-sm:items-start justify-between">
                 <div className="flex items-center">
                   <Image
+                    key={cartItem.item._id}
                     src={cartItem.item.media[0]}
                     width={100}
                     height={100}
@@ -75,10 +80,11 @@ const Cart = () => {
                 </div>
 
                 <div className="flex gap-4 items-center">
-                  <MinusCircle
+                <MinusCircle
                     className="hover:text-red-1 cursor-pointer"
-                    onClick={() => cart.decreaseQuantity(cartItem.item._id)}
+                    onClick={() => cartItem.quantity > 1 && cart.decreaseQuantity(cartItem.item._id)}
                   />
+                  
                   <p className="text-body-bold">{cartItem.quantity}</p>
                   <PlusCircle
                     className="hover:text-red-1 cursor-pointer"

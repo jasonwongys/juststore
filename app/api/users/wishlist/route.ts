@@ -8,12 +8,13 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async (req: NextRequest) => {
   try {
     const { userId } = auth()
+    // console.log("USER ID ", userId)
 
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 })
-    }
+    // if (!userId) {
+    //   return new NextResponse("Unauthorized", { status: 401 })
+    // }
 
-    await connectToDB()
+    // await connectToDB()
 
     const user = await User.findOne({ clerkId: userId })
 

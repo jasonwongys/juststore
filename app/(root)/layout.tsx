@@ -4,20 +4,22 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import "../globals.css";
 import Navbar from "@/components/Navbar";
-import ToasterProvider from "@/lib/providers/ToasterProvider";
+import Footer from "@/components/Footer";
 
+import ToasterProvider from "@/lib/providers/ToasterProvider";
+// import { AuthContext } from "./context/AuthContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Borcelle Store",
-  description: "Borcelle Ecommerce Store",
+  title: "SMLJ Store",
+  description: "SMLJ Store",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = { name: "John doe" };
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -25,6 +27,8 @@ export default function RootLayout({
           <ToasterProvider />
           <Navbar />
           {children}
+
+          <Footer />
         </ClerkProvider>
       </body>
     </html>

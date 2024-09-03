@@ -3,7 +3,7 @@
 import useCart from "@/lib/hooks/useCart";
 
 import { UserButton, useUser } from "@clerk/nextjs";
-import { CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
+import { CircleUserRound, Menu, Search, ShoppingCart,Home } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -27,12 +27,20 @@ const Navbar = () => {
       <div className="flex gap-4 text-base-bold max-lg:hidden">
         <Link
           href="/"
+          className={`hover:text-red-1 ${pathname === "/" && "text-red-1"}`}
+        >
+        Home
+        </Link>
+
+        <Link
+          href={user ? "/about" : "/sign-in"}
           className={`hover:text-red-1 ${
-            pathname === "/" && "text-red-1"
+            pathname === "/about" && "text-red-1"
           }`}
         >
-          Home
+          About 
         </Link>
+
         <Link
           href={user ? "/wishlist" : "/sign-in"}
           className={`hover:text-red-1 ${
@@ -48,6 +56,14 @@ const Navbar = () => {
           }`}
         >
           Orders
+        </Link>
+        <Link
+          href={user ? "/contact" : "/sign-in"}
+          className={`hover:text-red-1 ${
+            pathname === "/contact" && "text-red-1"
+          }`}
+        >
+          Contact Us
         </Link>
       </div>
 

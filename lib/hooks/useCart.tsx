@@ -53,15 +53,18 @@ const useCart = create(
         toast.success("Item quantity increased");
       },
       decreaseQuantity: (idToDecrease: String) => {
+        
         const newCartItems = get().cartItems.map((cartItem) =>
-          cartItem.item._id === idToDecrease
+          
+          cartItem.item._id === idToDecrease 
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
-        );
+        ); 
         set({ cartItems: newCartItems });
         toast.success("Item quantity decreased");
       },
       clearCart: () => set({ cartItems: [] }),
+      
     }),
     {
       name: "cart-storage",

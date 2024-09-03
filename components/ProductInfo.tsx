@@ -18,9 +18,9 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
   const cart = useCart();
 
   return (
-    <div className="max-w-[400px] flex flex-col gap-4">
+    <div className="max-w-[600px] flex flex-col gap-4 p-6">
       <div className="flex justify-between items-center">
-        <p className="text-heading3-bold">{productInfo.title}</p>
+        <p className="text-heading1-bold">{productInfo.title}</p>
         <HeartFavorite product={productInfo} />
       </div>
 
