@@ -5,7 +5,7 @@ import ProductList from "@/components/ProductList";
 export default function Home() {
   return (
     <>
-    <CarouselSlider/>
+      <CarouselSlider />
       <Collections />
       <ProductList />
     </>
@@ -13,4 +13,3 @@ export default function Home() {
 }
 
 export const dynamic = "force-dynamic";
-
