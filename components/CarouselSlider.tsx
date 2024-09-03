@@ -1,6 +1,6 @@
 "use client";
 // import Carousel from "react-bootstrap/Carousel";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -25,7 +25,7 @@ const CarouselSlider = () => {
     setCurrentIndex(newIndex);
   };
 
-  const goToSlide = (slideIndex) => {
+  const goToSlide = (slideIndex: SetStateAction<number>) => {
     setCurrentIndex(slideIndex);
   };
 
