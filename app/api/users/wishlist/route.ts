@@ -1,5 +1,5 @@
 import User from "@/lib/models/User";
-import { connectToDB } from "@/lib/mongoDB";
+import  connectToDB from "@/lib/mongoDB";
 
 import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
